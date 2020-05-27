@@ -116,6 +116,21 @@ GEM
       thor (>= 0.14, < 2.0)
     json (2.3.0)
     json (2.3.0-java)
+    kaminari (1.2.0)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.0)
+      kaminari-activerecord (= 1.2.0)
+      kaminari-core (= 1.2.0)
+    kaminari-actionview (1.2.0)
+      actionview
+      kaminari-core (= 1.2.0)
+    kaminari-activerecord (1.2.0)
+      activerecord
+      kaminari-core (= 1.2.0)
+    kaminari-bootstrap (3.0.1)
+      kaminari (>= 0.13.0)
+      rails
+    kaminari-core (1.2.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -209,6 +224,9 @@ GEM
       ffi (~> 1.0)
     regexp_parser (1.7.0)
     require_all (3.0.0)
+    responders (3.0.0)
+      actionpack (>= 5.0)
+      railties (>= 5.0)
     rexml (3.2.4)
     rspec-core (3.9.2)
       rspec-support (~> 3.9.3)
@@ -321,6 +339,8 @@ DEPENDENCIES
   ffaker
   jbuilder (~> 2.5)
   jquery-rails
+  kaminari
+  kaminari-bootstrap
   listen (>= 3.0.5, < 3.2)
   passenger
   pg
@@ -329,6 +349,7 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.0)
   rails_best_practices
+  responders
   rspec-rails
   rubocop
   sass-rails (~> 5.0)
