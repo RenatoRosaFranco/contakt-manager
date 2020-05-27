@@ -2,53 +2,63 @@
     <div class="panel-heading">
       <strong>Add Contact</strong>
     </div>           
-    <div class="panel-body">
+    
+    <%= form_for(@contact) do |f| %>
+      <div class="panel-body">
       <div class="form-horizontal">
         <div class="row">
           <div class="col-md-8">
+            <% if @contact.errors.any? %>
+              <div class='alert alert-danger'>
+                <h3>Plase correct this following errors:</h3>
+                
+                <ul>
+                  <% @contact.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
             <div class="form-group">
-              <label for="name" class="control-label col-md-3">Name</label>
+              <%= f.label :name, 'Name', class: 'control-label col-md-3' %>
               <div class="col-md-8">
-                <input type="text" name="name" id="name" class="form-control">
+                <%= f.text_field :name, class: 'form-control' %>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="company" class="control-label col-md-3">Company</label>
+              <%= f.label :company, 'Company', class: 'control-label col-md-3' %>
               <div class="col-md-8">
-                <input type="text" name="company" id="company" class="form-control">
+                <%= f.text_field :company, class: 'form-control' %>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="email" class="control-label col-md-3">Email</label>
+              <%= f.label :email, 'E-mail', class: 'control-label col-md-3' %>
               <div class="col-md-8">
-                <input type="text" name="email" id="email" class="form-control">
+                <%= f.email_field :email, class: 'form-control' %>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="phone" class="control-label col-md-3">Phone</label>
+              <%= f.label :phone, 'Phone', class: 'control-label col-md-3' %>
               <div class="col-md-8">
-                <input type="text" name="phone" id="phone" class="form-control">
+                <%= f.text_field :phone, class: 'form-control' %>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="name" class="control-label col-md-3">Address</label>
+              <%= f.label :address, 'Address', class: 'control-label col-md-3' %>
               <div class="col-md-8">
-                <textarea name="address" id="address" rows="3" class="form-control"></textarea>
+                <%= f.text_area :address, class: 'form-control', rows: 3 %>
               </div>
             </div>
             <div class="form-group">
               <label for="group" class="control-label col-md-3">Group</label>
               <div class="col-md-5">
-                <select name="group" id="group" class="form-control">
-                  <option value="">Select group</option>
-                  <option value="1">Family</option>
-                  <option value="2">Friend</option>
-                  <option value="3">Other</option>
-                </select>
+                <%= f.collection_select(:group_id, Group.all, :id, :name,
+                {prompt: 'Select group'}, class: 'form-control') %>
               </div>
               <div class="col-md-3">
                 <a href="#" id="add-group-btn" class="btn btn-default btn-block">Add Group</a>
@@ -81,8 +91,8 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="panel-footer">
+      </div>
+      <div class="panel-footer">
       <div class="row">
         <div class="col-md-8">
           <div class="row">
@@ -93,6 +103,7 @@
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>
