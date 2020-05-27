@@ -6,5 +6,5 @@ class Group < ApplicationRecord
 
   default_scope -> { order(:name) }
 
-  has_many :contatcs, dependent: :destroy
+  has_many :contacts, dependent: :destroy
 end

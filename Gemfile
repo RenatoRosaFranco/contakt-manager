@@ -44,6 +44,8 @@ group :development, :test do
   gem 'awesome_print'
   gem 'rubocop'
   gem 'simplecov'
+  gem 'faker'
+  gem 'ffaker'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'rails_best_practices'

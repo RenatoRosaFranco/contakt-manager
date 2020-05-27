@@ -5,3 +5,36 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'benchmark'
+require 'faker'
+
+puts "Start Running Seeds"
+
+realtime = Benchmark.realtime do 
+
+    # Group
+    Group.destroy_all
+    Group.create(
+      [
+        { name: 'Amigos' },
+        { name: 'Clientes' },
+        { name: 'Familia' }
+      ]
+    )
+
+    # Contact
+    Contact.destroy_all
+    (1..20).each do |i|
+    Contact.create({
+      name: Faker::Internet.name,
+      email: Faker::Internet.email,
+      company: Faker::Company.name, 
+      phone: Faker::PhoneNumber.cell_phone,
+      address: "#{Faker::Address.street_address} #{Faker::Address.zip} #{Faker::Address.city}",
+      group: Group.all.sample,
+    }) 
+  end
+end
+
+puts "Finished Running Seeds"
+puts "Process time at #{Time.at(realtime.ceil)}"
