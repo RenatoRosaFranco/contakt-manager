@@ -1,15 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang='pt-BR'>
   <head>
-    <title>ContactApp</title>
+    <title>Contact Manager - <%= yield :title %> </title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <body class="<%= controller.controller_name %>" data-spy='scroll'>
+    <!-- header -->
+    <%= render partial: 'layouts/header' %>
+    
+    <!-- content -->
+    <div class='container'>
+      <div class='row'>
 
-  <body>
-    <%= yield %>
+        <!-- sidebar -->
+        <div class='col-md-3'>
+          <%= render 'layouts/sidebar' %>
+        </div>
+
+        <!-- yield --->
+        <div class='col-md-9'>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <%= render partial: 'layouts/footer' %>
   </body>
 </html>
