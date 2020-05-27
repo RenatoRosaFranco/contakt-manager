@@ -6,6 +6,8 @@ class Contact < ApplicationRecord
 
   default_scope -> { order(:name) }
 
+  paginates_per 3
+  
   belongs_to :group
 
   def gravatar

@@ -26,7 +26,7 @@ realtime = Benchmark.realtime do
     Contact.destroy_all
     (1..20).each do |i|
     Contact.create({
-      name: Faker::Internet.name,
+      name: Faker::Name.name,
       email: Faker::Internet.email,
       company: Faker::Company.name, 
       phone: Faker::PhoneNumber.cell_phone,
@@ -37,4 +37,5 @@ realtime = Benchmark.realtime do
 end
 
 puts "Finished Running Seeds"
+
 puts "Process time at #{Time.at(realtime.ceil)}"
