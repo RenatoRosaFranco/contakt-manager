@@ -19,6 +19,7 @@ gem 'bootstrap3-rails'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
+gem 'paperclip'
 gem 'responders'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
