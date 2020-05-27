@@ -2,9 +2,9 @@
   <td class="middle">
     <div class="media">
       <div class="media-left">
-        <a href="#">
-          <img class="media-object" src="http://placehold.it/100x100" alt="...">
-        </a>
+        <%= link_to contact_path(contact) do %>
+          <%= image_tag(contact.gravatar, class: 'media-object') %>
+        <% end %>
       </div>
       <div class="media-body">
         <h4 class="media-heading"><%= contact.name %></h4>
