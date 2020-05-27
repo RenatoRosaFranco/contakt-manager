@@ -3,7 +3,7 @@
       <strong>Add Contact</strong>
     </div>           
     
-    <%= form_for(@contact) do |f| %>
+    <%= form_for(@contact, html: { multipart: true }) do |f| %>
       <div class="panel-body">
       <div class="form-horizontal">
         <div class="row">
@@ -80,11 +80,14 @@
           <div class="col-md-4">
             <div class="fileinput fileinput-new" data-provides="fileinput">
               <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
-                <img src="http://placehold.it/150x150" alt="Photo">
+                <%= image_tag @contact.get_avatar, alt: 'Photo',
+                  style: 'width: 150px; height: 150px;' %>
               </div>
               <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
               <div class="text-center">
-                <span class="btn btn-default btn-file"><span class="fileinput-new">Choose Photo</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+                <span class="btn btn-default btn-file"><span class="fileinput-new">Choose Photo</span><span class="fileinput-exists">Change</span>
+                  <%= f.file_field :avatar %>
+                </span>
                 <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
               </div>
             </div>

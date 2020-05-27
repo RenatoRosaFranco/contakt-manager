@@ -5,9 +5,11 @@ class ContactsController < ApplicationController
 
   def index
     if (params[:group_id] && !params[:group_id].empty?)
-      @contacts = Contact.where(group_id: params[:group_id]).page(params[:page])
+      @contacts = Contact.where(group_id: params[:group_id]).
+        order(created_at: :desc).page(params[:page])
     else
-      @contacts = Contact.all.page(params[:page])
+      @contacts = Contact.all.page(params[:page]).
+        order(created_at: :desc)
     end
   end
 
@@ -59,6 +61,7 @@ class ContactsController < ApplicationController
   end
 
   def contact_params
-    params.require(:contact).permit(:name, :company, :email, :phone, :address, :group_id)
+    params.require(:contact)
+      .permit(:name, :company, :email, :phone, :address, :group_id, :avatar)
   end
 end 
