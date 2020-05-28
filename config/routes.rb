@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   devise_for :users, {
     path: 'auth',
+    controllers: {
+      registrations: :custom_registrations
+    },
     path_names: {
       sign_in: 'login',
       sign_out: 'logout',
