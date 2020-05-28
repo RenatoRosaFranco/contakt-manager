@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class ContactsController < ApplicationController
-  before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_contact, only: [:edit, :update, :destroy]
 
   def index
     if (params[:group_id] && !params[:group_id].empty?)
@@ -38,9 +39,11 @@ class ContactsController < ApplicationController
   end
 
   def edit
+    authorize @contact
   end
 
   def update
+    authorize @contact
     respond_to do |format|
       if @contact.update(contact_params)
         format.html { redirect_to contacts_path, success: 'Contact was successfully updated.'  }
@@ -53,6 +56,7 @@ class ContactsController < ApplicationController
   end
 
   def destroy
+    authorize @contact
     @contact.destroy
     respond_to do |format|
       format.html { redirect_to contacts_path, success: 'Contact as successfully destroyed.' }
