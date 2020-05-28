@@ -5,12 +5,18 @@ class ContactsController < ApplicationController
 
   def index
     if (params[:group_id] && !params[:group_id].empty?)
-      @contacts = Contact.where(group_id: params[:group_id]).
+      @contacts = current_user.contacts.where(group_id: params[:group_id]).
         order(created_at: :desc).page(params[:page])
     else
-      @contacts = Contact.all.page(params[:page]).
+      @contacts = current_user.contacts.page(params[:page]).
         order(created_at: :desc)
     end
+  end
+
+  def autocomplete
+    @contacts = Contact.search(params[:term]).
+      order(created_at: :desc).
+        page(params[:page])
   end
 
   def new
@@ -18,7 +24,7 @@ class ContactsController < ApplicationController
   end
 
   def create
-    @contact = Contact.new(contact_params)
+    @contact = current_user.contacts.build(contact_params)
     
     respond_to do |format|
       if @contact.save
