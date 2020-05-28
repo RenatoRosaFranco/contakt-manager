@@ -3,7 +3,7 @@
 class ContactPolicy < ApplicationPolicy
   
   def can_edit?
-    user.eql?(record.user_id)
+    user.id.eql?(record.user_id)
   end
   
   def update?
