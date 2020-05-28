@@ -26,15 +26,12 @@ class ContactsController < ApplicationController
 
   def create
     @contact = current_user.contacts.build(contact_params)
-    
-    respond_to do |format|
-      if @contact.save
-        format.html { redirect_to contacts_path, success: 'Contact was successfully created.'  }
-        format.json { render :show, status: :created, location: @contact }
-      else
-        format.html { render :new }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
-      end
+    if @contact.save
+      flash[:success] = "Contact was successfuly created."
+      redirect_to contacts_path
+    else
+      flash[:error] = "Contact failed to be created."
+      render 'new'
     end
   end
 
@@ -44,14 +41,12 @@ class ContactsController < ApplicationController
 
   def update
     authorize @contact
-    respond_to do |format|
-      if @contact.update(contact_params)
-        format.html { redirect_to contacts_path, success: 'Contact was successfully updated.'  }
-        format.json { render :show, status: :ok, location: @contact }
-      else
-        format.html { render :edit }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
-      end
+    if @contact.update(contact_params)
+      flash[:success] = "Contact was successfully updated."
+      redirect_to contacts_path
+    else
+      flash[:error] = "Contact failed to be updated."
+      render :edit
     end
   end
 

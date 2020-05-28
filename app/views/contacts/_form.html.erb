@@ -5,18 +5,7 @@
       <div class="form-horizontal">
         <div class="row">
           <div class="col-md-8">
-            <% if @contact.errors.any? %>
-              <div class='alert alert-danger'>
-                <h3>Plase correct this following errors:</h3>
-                
-                <ul>
-                  <% @contact.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                  <% end %>
-                </ul>
-              </div>
-            <% end %>
-
+          
             <div class="form-group">
               <%= f.label :name, 'Name', class: 'control-label col-md-3' %>
               <div class="col-md-8">

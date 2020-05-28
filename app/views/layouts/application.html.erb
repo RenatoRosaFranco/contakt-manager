@@ -13,8 +13,9 @@
   </head>
   <body class="<%= controller.controller_name %>" data-spy='scroll'>
     <!-- header -->
-    <%= render partial: 'layouts/header' %>
-    
+    <%= render 'layouts/header' %>
+    <%= render 'layouts/flash_messages' %>
+
     <!-- content -->
     <div class='container'>
       <div class='row'>
@@ -23,6 +24,6 @@
     </div>
 
     <!-- footer -->
-    <%= render partial: 'layouts/footer' %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
