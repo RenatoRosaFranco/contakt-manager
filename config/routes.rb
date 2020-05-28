@@ -1,7 +1,13 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  root to: 'home#index'
+
   devise_for :users
-  root to: 'contacts#index'
-  resources :contacts
+
+  resources :contacts, except: [:show] do
+    get 'autocomplete', on: :collection
+  end
+
+  get '/dashboard', to: 'dashboard#index'
 end
