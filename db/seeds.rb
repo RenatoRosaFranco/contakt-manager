@@ -17,21 +17,36 @@ realtime = Benchmark.realtime do
     User.create(
       [
         {
-          name: '',
-          email: '',
-          password: '',
-          password_confirmation: ''
+          name: 'John Doe',
+          email: 'johndoe@test.com',
+          password: 'test123',
+          password_confirmation: 'test123'
         }
       ]
     )
+
+    john = User.last
 
     # Group
     Group.destroy_all
     Group.create(
       [
-        { name: 'Amigos' },
-        { name: 'Clientes' },
-        { name: 'Familia' }
+        { 
+          name: 'Amigos', 
+          user: john 
+        },
+        { 
+          name: 'Clientes', 
+          user: john 
+        },
+        { 
+          name: 'Familia', 
+          user: john 
+        },
+        { 
+          name: 'Empresa', 
+          user: john 
+        }
       ]
     )
 
@@ -45,10 +60,10 @@ realtime = Benchmark.realtime do
       phone: Faker::PhoneNumber.cell_phone,
       address: "#{Faker::Address.street_address} #{Faker::Address.zip} #{Faker::Address.city}",
       group: Group.all.sample,
+      user: john
     }) 
   end
 end
 
 puts "Finished Running Seeds"
-
 puts "Process time at #{Time.at(realtime.ceil)}"
