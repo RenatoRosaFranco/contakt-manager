@@ -53,10 +53,8 @@ class ContactsController < ApplicationController
   def destroy
     authorize @contact
     @contact.destroy
-    respond_to do |format|
-      format.html { redirect_to contacts_path, success: 'Contact as successfully destroyed.' }
-      format.json {  head :no_content }
-    end
+    flash[:success] = "Contact was successfully deleted."
+    redirect_to contacts_path
   end
 
   private
