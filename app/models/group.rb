@@ -7,5 +7,5 @@ class Group < ApplicationRecord
   default_scope -> { order(:name) }
 
   has_many :contacts, dependent: :destroy
-  # belongs_to :user
+  belongs_to :user
 end

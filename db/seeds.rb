@@ -12,6 +12,19 @@ puts "Start Running Seeds"
 
 realtime = Benchmark.realtime do 
 
+    # User
+    User.destroy_all
+    User.create(
+      [
+        {
+          name: '',
+          email: '',
+          password: '',
+          password_confirmation: ''
+        }
+      ]
+    )
+
     # Group
     Group.destroy_all
     Group.create(
