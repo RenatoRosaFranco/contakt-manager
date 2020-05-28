@@ -4,14 +4,48 @@
 </div>
 <% end %>
 
-<div class="panel panel-default">
-  <table class="table">
-    <% @contacts.each do |contact| %>
-      <%= render 'contact', contact: contact %>
-    <% end %>
-  </table>            
+
+<!-- sidebar -->
+<div class='col-md-3'>
+  <%= render 'layouts/sidebar' %>
+  
+  <div class='row'>
+    <div class='col-md-12'>
+      <div class='alert alert-info'>
+        <span>Created by: </span>
+        <h5 class='bold'>Renato Rosa Franco</span>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="text-center">
-  <%= paginate(@contacts) if !@contacts.empty? %>
+<!-- yield --->
+<div class='col-md-9'>
+  <%= render 'layouts/messages' if !flash.empty? %>
+
+    <div class="panel panel-default">
+      <div class='panel-heading clearfix'>
+        <div class='pull-left'>
+          <h4>All Contacts</h4>
+        </div>
+
+        <div class='pull-right'>
+          <%= link_to  new_contact_path, class: 'btn btn-success' do %>
+            <i class='glyphicon glyphicon-plus'></i>
+            Add Contact
+          <% end %>
+        </div>
+      </div>
+
+      <table class="table">
+        <% @contacts.each do |contact| %>
+          <%= render 'contact', contact: contact %>
+        <% end %>
+      </table>            
+    </div>
+
+    <div class="text-center">
+      <%= paginate(@contacts) if !@contacts.empty? %>
+    </div>
+  </div>
 </div>

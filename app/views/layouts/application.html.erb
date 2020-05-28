@@ -17,26 +17,7 @@
     <!-- content -->
     <div class='container'>
       <div class='row'>
-
-        <!-- sidebar -->
-        <div class='col-md-3'>
-          <%= render 'layouts/sidebar' %>
-          
-          <div class='row'>
-            <div class='col-md-12'>
-              <div class='alert alert-info'>
-                <span>Created by: </span>
-                <h5 class='bold'>Renato Rosa Franco</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- yield --->
-        <div class='col-md-9'>
-          <%= render 'layouts/messages' if !flash.empty? %>
-          <%= yield %>
-        </div>
+        <%= yield  %>
       </div>
     </div>
 
