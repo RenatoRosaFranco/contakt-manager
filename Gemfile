@@ -23,6 +23,7 @@ gem 'paperclip'
 gem 'responders'
 gem 'jasny-bootstrap-rails'
 gem 'devise'
+gem 'toastr-rails'
 gem 'pundit'
 gem 'faker'
 # Use CoffeeScript for .coffee assets and views
